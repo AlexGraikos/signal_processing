@@ -1,6 +1,7 @@
 function wd = wdf(sig,win_len,overlap,fs)
 % wd = wdf(sig,win_len,overlap,fs)
-%   Inputs
+%
+%   Inputs:
 % sig: Input signal
 % win_len: Window length
 % overlap: Window overlap ratio
