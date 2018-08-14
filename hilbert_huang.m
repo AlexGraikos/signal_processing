@@ -1,25 +1,35 @@
-function hilbert_huang(sig,fs,nstd,ensemble)
+function [imf,inst_freq,inst_amp] = hilbert_huang(sig,fs,nstd,ensemble)
+% [imf,inst_freq] = hilbert_huang(sig,fs,nstd,ensemble)
+%
+%   Inputs:
+% sig: Input signal
+% fs: Sampling frequency
+% nstd: Additive noise standard deviation ratio
+% ensemble: Number of ensemble IMFs to compute
+%
+%   Outputs:
+% imf: Matrix containing the IMFs
+% inst_freq: Cell array containing the instantaneous frequencies
+% inst_amp: Cell array containing the instantaneous amplitudes
 
 % Extract IMFs by applying EMD/EEMD
-imf = eemd(sig,nstd,ensemble);
-num_imfs = size(imf,2)-2; % Ignore singal and residual
+emd_result = eemd(sig,nstd,ensemble);
+imf = emd_result(:,2:end-1);
+residual = emd_result(:,end);
+num_imfs = size(imf,2);
 
-% Plot Signal
+% Plot IMFs and residual
 figure();
-sp1(1) = subplot(num_imfs+2,1,1);
-plot(imf(:,1));
+sp1(1) = subplot(size(emd_result,2),1,1);
+plot(sig);
 title('Input Signal');
-
-% Plot IMFs
 for k=1:num_imfs
-    sp1(k+1) = subplot(num_imfs+2,1,k+1);
-    plot(imf(:,k+1));
+    sp1(k+1) = subplot(size(emd_result,2),1,k+1);
+    plot(imf(:,k));
     title(['IMF ' num2str(k)]);
 end
-
-% Plot residual
-sp1(end+1) = subplot(num_imfs+2,1,num_imfs+2);
-plot(imf(:,end));
+sp1(end+1) = subplot(size(emd_result,2),1,size(emd_result,2));
+plot(residual);
 title('Residual');
 linkaxes(sp1, 'x');
 
@@ -27,9 +37,9 @@ linkaxes(sp1, 'x');
 inst_freq = cell(num_imfs,1);
 inst_amp = cell(num_imfs,1);
 for k = 1:num_imfs
-    ht = hilbert(imf(:,k+1));
-    inst_freq{k} = diff(unwrap(angle(ht)))/(2*pi)*fs;
-    inst_amp{k} = abs(ht(1:end-1));
+    ht = hilbert(imf(:,k));
+    inst_freq{k} = fs/(2*pi)*diff(unwrap(angle(ht)));
+    inst_amp{k} = abs(ht(2:end)); % diff ignores first sample
 end
 
 % Plot HHT
@@ -38,11 +48,11 @@ sp2(1) = subplot(num_imfs+1,1,1);
 plot(sig);
 title('Input Signal');
 
-xval = 0:length(sig)-2;
+xval = 1:length(sig)-1;
 for k=1:num_imfs
     sp2(k+1) = subplot(num_imfs+1,1,k+1);
     scatter(xval,inst_freq{k},10,inst_amp{k},'filled');
-    title(['Instantaneous frequency of IMF ' num2str(k)]);
+    title(['Hilbert Spectrum of IMF ' num2str(k)]);
 end
 linkaxes(sp2, 'x');
 

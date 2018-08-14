@@ -6,6 +6,7 @@ function [stft,t_lab] = stft(sig,win_len,overlap,fs)
 % win_len: Window length
 % overlap: Window overlap ratio
 % fs: Sampling Frequency
+%
 %   Outputs:
 % stft: STFT of input singal
 % t_lab: Time labels of STFT computation

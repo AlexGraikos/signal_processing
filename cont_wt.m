@@ -6,6 +6,7 @@ function wt = cont_wt(sig,fs,wname,params)
 % fs: Sampling frequency
 % wname: Wavelet to use
 % params: Wavelet parameters (for morse wavelets)
+%
 %   Outputs:
 % wt: Continuous wavelet transform
 

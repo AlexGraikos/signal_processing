@@ -6,6 +6,7 @@ function wd = wdf(sig,win_len,overlap,fs)
 % win_len: Window length
 % overlap: Window overlap ratio
 % fs: Sampling frequency
+%
 %   Outputs:
 % wd: WDF of input singal
 

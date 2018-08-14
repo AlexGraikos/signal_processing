@@ -5,6 +5,7 @@ function [c,l] = discr_wt(sig,n,wname)
 % sig: Input signal
 % n: Decomposition level
 % wname: Wavelet to use
+%
 %   Outputs:
 % c: Decomposition coefficients
 % l: Number of coefficients at each level
