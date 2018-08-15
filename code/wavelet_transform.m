@@ -1,5 +1,6 @@
 function wt = wavelet_transform(sig,fs,wname,params)
 % wt = wavelet_transform(sig,fs,wname,params)
+% Applies WT to input signal.
 %
 %   Inputs:
 % sig: Input signal
@@ -9,6 +10,8 @@ function wt = wavelet_transform(sig,fs,wname,params)
 %
 %   Outputs:
 % wt: Continuous wavelet transform
+%
+% e.g. wt = wavelet_transform(sig1,fs1,'morse',[2 90]);
 
 % Calculate CWT
 N = length(sig);

@@ -1,5 +1,6 @@
 function [c,l] = wavelet_mra(sig,n,wname)
 % [c,l] = wavelet_mra(sig,n,wname)
+% Decomposes input signal into multi-resolution components.
 %
 %   Inputs:
 % sig: Input signal
@@ -9,6 +10,8 @@ function [c,l] = wavelet_mra(sig,n,wname)
 %   Outputs:
 % c: Decomposition coefficients
 % l: Number of coefficients at each level
+%
+% e.g. [c,l] = wavelet_mra(sig1,5,'db2');
 
 % Compute n-level wavelet decomposition with specified wavelet
 [c,l] = wavedec(sig,n,wname);

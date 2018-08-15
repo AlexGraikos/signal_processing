@@ -1,5 +1,6 @@
 function [sig_t,t_lab] = stft(sig,fs,win_len,overlap)
 % [sig_t,t_lab] = stft(sig,win_len,overlap,fs)
+% Applies STFT on input signal.
 %
 %   Inputs:
 % sig: Signal to transform
@@ -10,6 +11,8 @@ function [sig_t,t_lab] = stft(sig,fs,win_len,overlap)
 %   Outputs:
 % stft: STFT of input singal
 % t_lab: Time labels of STFT computation
+%
+% e.g. [sig_t,t_lab] = stft(sig1,fs1,200,0.5);
 
 [sig_t,w,t_lab] = spectrogram(sig, win_len, floor(win_len*overlap), [], fs);
 

@@ -1,5 +1,6 @@
 function wd = wdf(sig,fs,win_len,overlap)
 % wd = wdf(sig,win_len,overlap,fs)
+% Computes the WDF of the input signal.
 %
 %   Inputs:
 % sig: Input signal
@@ -9,6 +10,8 @@ function wd = wdf(sig,fs,win_len,overlap)
 %
 %   Outputs:
 % wd: WDF of input singal
+%
+% e.g. wd = wdf(sig1,fs1,200,0.5);
 
 % Compute WDF over overlapping windows
 N = length(sig);

@@ -1,5 +1,6 @@
 function [imf,inst_freq,inst_amp] = hilbert_huang(sig,fs,nstd,ensemble)
 % [imf,inst_freq] = hilbert_huang(sig,fs,nstd,ensemble)
+% Applies HHT on input signal.
 %
 %   Inputs:
 % sig: Input signal
@@ -11,6 +12,8 @@ function [imf,inst_freq,inst_amp] = hilbert_huang(sig,fs,nstd,ensemble)
 % imf: Matrix containing the IMFs
 % inst_freq: Cell array containing the instantaneous frequencies
 % inst_amp: Cell array containing the instantaneous amplitudes
+%
+% e.g. [imf,inst_freq,inst_amp] = hilbert_huang(sig1,fs1,0.1,20);
 
 % Extract IMFs by applying EMD/EEMD
 emd_result = eemd(sig,nstd,ensemble);
