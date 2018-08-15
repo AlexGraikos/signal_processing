@@ -1,5 +1,5 @@
-function wt = cont_wt(sig,fs,wname,params)
-% wt = cont_wt(sig,fs,wname,params)
+function wt = wavelet_transform(sig,fs,wname,params)
+% wt = wavelet_transform(sig,fs,wname,params)
 %
 %   Inputs:
 % sig: Input signal
@@ -15,6 +15,7 @@ N = length(sig);
 if (strcmp(wname,'morse'))
     [wt,freq] = cwt(sig,wname,fs,'WaveletParameters',params);
 else
+    params = [];
     [wt,freq] = cwt(sig,wname,fs);
 end
 
@@ -22,7 +23,7 @@ end
 figure();
 sp(1) = subplot(2,1,1);
 imagesc([0 N],[freq(1) freq(end)], abs(wt));
-title('Continuous Wavelet Transform');
+title(['Wavelet Transform ' wname ' wavelet params=' mat2str(params)]);
 xlabel('Samples');
 ylabel('Frequency');
 set(gca,'Ydir','Normal');

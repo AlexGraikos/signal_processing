@@ -1,11 +1,11 @@
-function wd = wdf(sig,win_len,overlap,fs)
+function wd = wdf(sig,fs,win_len,overlap)
 % wd = wdf(sig,win_len,overlap,fs)
 %
 %   Inputs:
 % sig: Input signal
+% fs: Sampling frequency
 % win_len: Window length
 % overlap: Window overlap ratio
-% fs: Sampling frequency
 %
 %   Outputs:
 % wd: WDF of input singal
@@ -27,7 +27,8 @@ freq = (-nfft/2+1:nfft/2) / nfft * fs;
 figure();
 sp(1) = subplot(2,1,1);
 imagesc([0 N], [freq(1) freq(end)], wd);
-title('Wigner Distribution');
+title(['Wigner Distribution win\_len=' num2str(win_len) ' overlap ' ...
+    num2str(overlap*100) '%']);
 xlabel('Samples');
 ylabel('Frequency');
 set(gca,'Ydir','Normal');

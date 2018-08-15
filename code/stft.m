@@ -1,22 +1,22 @@
-function [stft,t_lab] = stft(sig,win_len,overlap,fs)
-% [stft,t_lab] = stft(sig,win_len,overlap,fs)
+function [sig_t,t_lab] = stft(sig,fs,win_len,overlap)
+% [sig_t,t_lab] = stft(sig,win_len,overlap,fs)
 %
 %   Inputs:
 % sig: Signal to transform
+% fs: Sampling Frequency
 % win_len: Window length
 % overlap: Window overlap ratio
-% fs: Sampling Frequency
 %
 %   Outputs:
 % stft: STFT of input singal
 % t_lab: Time labels of STFT computation
 
-[stft,w,t_lab] = spectrogram(sig, win_len, floor(win_len*overlap), [], fs);
+[sig_t,w,t_lab] = spectrogram(sig, win_len, floor(win_len*overlap), [], fs);
 
 figure();
 % Compute and plot STFT (hamming window) with given parameters
 sp(1) = subplot(2,1,1);
-imagesc([t_lab(1) t_lab(end)], [w(1) w(end)], log10(abs(stft)));
+imagesc([t_lab(1) t_lab(end)], [w(1) w(end)], log10(abs(sig_t)));
 xlabel('Time (s)');
 ylabel('Frequency (Hz)');
 title(['STFT win\_len=',num2str(win_len), ... 

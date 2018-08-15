@@ -1,5 +1,5 @@
-function [c,l] = discr_wt(sig,n,wname)
-% c = discr_wt(sig,n,wname)
+function [c,l] = wavelet_mra(sig,n,wname)
+% [c,l] = wavelet_mra(sig,n,wname)
 %
 %   Inputs:
 % sig: Input signal
@@ -20,6 +20,8 @@ N = length(sig);
 figure();
 sp(1) = subplot(n+2,1,1);
 plot(sig);
+text(length(sig)/2, 4+max(ylim), [wname,' Wavelet MRA'], ... 
+    'HorizontalAlignment', 'center', 'FontSize', 12);
 title('Input signal');
 
 % Plot detail coefficients (interpolated to N samples)
