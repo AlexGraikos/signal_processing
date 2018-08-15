@@ -2,7 +2,10 @@
 signals = [112, 123, 118, 217, 221];
 
 % Read signals from database
+% Both leads of subject 112
 [sig1,fs1,tm1] = rdsamp(['database/mitdb/' num2str(signals(1))],1);
+[sig12,fs12,tm12] = rdsamp(['database/mitdb/' num2str(signals(1))],2);
+
 [sig2,fs2,tm2] = rdsamp(['database/mitdb/' num2str(signals(2))],2);
 [sig3,fs3,tm3] = rdsamp(['database/mitdb/' num2str(signals(3))],1);
 [sig4,fs4,tm4] = rdsamp(['database/mitdb/' num2str(signals(4))],1);
@@ -22,7 +25,13 @@ figure();
 plot(tm1,sig1);
 hold on;
 text(tm1(ann1),sig1(ann1),anntype1);
-title(['Signal ' num2str(signals(1)) ' annotated']);
+title(['Signal ' num2str(signals(1)) ' annotated (lead 1)']);
+
+figure();
+plot(tm12,sig12);
+hold on;
+text(tm12(ann1),sig12(ann1),anntype1);
+title(['Signal ' num2str(signals(1)) ' annotated (lead 2)']);
 
 figure();
 plot(tm2,sig2);
