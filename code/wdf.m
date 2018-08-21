@@ -1,5 +1,5 @@
 function wd = wdf(sig,fs,win_len,overlap)
-% wd = wdf(sig,win_len,overlap,fs)
+% wd = wdf(sig,fs,win_len,overlap)
 % Computes the WDF of the input signal.
 %
 %   Inputs:
@@ -29,7 +29,7 @@ freq = (-nfft/2+1:nfft/2) / nfft * fs;
 % Plot distribution
 figure();
 sp(1) = subplot(2,1,1);
-imagesc([0 N], [freq(1) freq(end)], wd);
+imagesc([0 N], [freq(1) freq(end)], log10(wd));
 title(['Wigner Distribution win\_len=' num2str(win_len) ' overlap ' ...
     num2str(overlap*100) '%']);
 xlabel('Samples');

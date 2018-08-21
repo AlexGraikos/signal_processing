@@ -1,5 +1,5 @@
 function [sig_t,t_lab] = stft(sig,fs,win_len,overlap)
-% [sig_t,t_lab] = stft(sig,win_len,overlap,fs)
+% [sig_t,t_lab] = stft(sig,fs,win_len,overlap)
 % Applies STFT on input signal.
 %
 %   Inputs:
