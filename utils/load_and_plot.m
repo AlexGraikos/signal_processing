@@ -2,14 +2,14 @@
 signals = [112, 123, 118, 217, 221];
 
 % Read signals from database
-% Both leads of subject 112
 [sig1,fs1,tm1] = rdsamp(['database/mitdb/' num2str(signals(1))],1);
+% Both leads of subject 112
 [sig12,fs12,tm12] = rdsamp(['database/mitdb/' num2str(signals(1))],2);
 
-[sig2,fs2,tm2] = rdsamp(['database/mitdb/' num2str(signals(2))],2);
+[sig2,fs2,tm2] = rdsamp(['database/mitdb/' num2str(signals(2))],1);
 [sig3,fs3,tm3] = rdsamp(['database/mitdb/' num2str(signals(3))],1);
 [sig4,fs4,tm4] = rdsamp(['database/mitdb/' num2str(signals(4))],1);
-[sig5,fs5,tm5] = rdsamp(['database/mitdb/' num2str(signals(5))],2);
+[sig5,fs5,tm5] = rdsamp(['database/mitdb/' num2str(signals(5))],1);
 
 % Read signal annotations
 % Explained in detail at
