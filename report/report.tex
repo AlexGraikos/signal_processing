@@ -9,7 +9,6 @@
 \usepackage[dvipsnames]{xcolor}
 \usepackage{enumitem}
 \usepackage[bottom]{footmisc}
-\usepackage{fancyvrb}
 \usepackage{amsmath}
 \usepackage{array}
 \setitemize{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
@@ -36,7 +35,7 @@
 \maketitle
 
 \section*{Σήματα που επιλέχθηκαν}
-Τα σήματα που επιλέξαμε να αναλύσουμε είναι τα \textbf{112}, \textbf{123}, \textbf{118}, \textbf{217}, \textbf{221}. Τα σήματα 1xx λήφθησαν τυχαία από ασθενείς με διάφορες παθήσεις ενώ τα 2xx έχουν επιλεχθεί έτσι ώστε να περιέχουν σπάνια καρδιακά φαινόμενα με ιδιαίτερο ενδιαφέρον στη μελέτη τους.
+Τα σήματα που επιλέξαμε να αναλύσουμε είναι τα \textbf{112}, \textbf{123}, \textbf{118}, \textbf{217}, \textbf{221}. Τα σήματα 1xx λήφθηκαν τυχαία από ασθενείς με διάφορες παθήσεις ενώ τα 2xx έχουν επιλεχθεί έτσι ώστε να περιέχουν σπάνια καρδιακά φαινόμενα με ιδιαίτερο ενδιαφέρον στη μελέτη τους.
 
 \begin{center}
 \begin{tabular}{| >{\centering\arraybackslash}m{1cm} | >{\centering\arraybackslash}m{15cm}|} 
@@ -56,56 +55,517 @@
 \end{tabular}
 \end{center}
 
-% -- Single figure --
-\begin{figure}[h]
-\centering
-Απλό Σχήμα.
-%\includegraphics[width=0.48\textwidth]{fig/} \\
 
-\caption{Λεζάντα (Απλό Σχήμα).}
-\label{fig:1}
-\end{figure}
+\section*{Ανάλυση Σημάτων}
+\subsection*{112}
 
-% -- Multi-figure --
+% --- STFT, WDF, CWT ---
 \begin{figure}[H]
 \centering
 \begin{minipage}{0.48\textwidth}
 	\centering
-	%\includegraphics[width=\textwidth]{fig/}
-	Πόλλαπλό σχήμα.
+	\includegraphics[width=\textwidth]{fig/112l1_stft_wdf.pdf}
 	
 	(α)
 \end{minipage}
 \begin{minipage}{0.48\textwidth}
 	\centering
-	%\includegraphics[width=\textwidth]{fig/}
-	Πόλλαπλό σχήμα.
+	\includegraphics[width=\textwidth]{fig/112l1_cwt.pdf}
 	
 	(β)
 \end{minipage}
 \vfill
-\begin{minipage}{0.48\textwidth}
-	\centering
-	%\includegraphics[width=\textwidth]{fig/}
-	Πόλλαπλό σχήμα.
-	
-	(γ)
-\end{minipage}
-\begin{minipage}{0.48\textwidth}
-	\centering
-	%\includegraphics[width=\textwidth]{fig/}
-	Πόλλαπλό σχήμα.
-	
-	(δ)
-\end{minipage}
-%\includegraphics[width=0.48\textwidth]{fig/}
-Πόλλαπλό σχήμα.
-
-(ε)
-\caption{Λεζάντα (Πολλαπλό Σχήμα).}
-\label{fig:2}
+\caption{(α) Short Time Fourier Transform και Wigner Distribution Function (β) Wavelet Transform (Morlet, Morse wavelets) του σήματος.}
+\label{fig:112l1_stft_wdf_wt}
 \end{figure}
 
 
+% --- DWT ---
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/112l1_dwt1.pdf}
+	
+	(α)
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/112l1_dwt2.pdf}
+	
+	(β)
+\end{minipage}
+\vfill
+\caption{Wavelet Decomposition του σήματος χρησιμοποιώντας wavelet (α) Haar (β) Symlet4.}
+\label{fig:112l1_dwt}
+\end{figure}
+
+
+% --- EMD/HHT ---
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/112l1_emd.pdf}
+	
+	(α)
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/112l1_hht.pdf}
+	
+	(β)
+\end{minipage}
+\vfill
+\caption{(α) Emperical Mode Decomposition (β) Hilbert-Huang Transform του σήματος.}
+\label{fig:112l1_hht}
+\end{figure}
+
+
+% --- EEMD/HHT ---
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/112l1_emd_ensemble.pdf}
+	
+	(α)
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/112l1_hht_ensemble.pdf}
+	
+	(β)
+\end{minipage}
+\vfill
+\caption{(α) Ensemble Emperical Mode Decomposition (β) Hilbert-Huang Transform του σήματος με $n_{ens}=50$ και $\sigma_n = 0.1$.}
+\label{fig:112l1_hht_ensemble}
+\end{figure}
+
+\subsection*{112 (lead 2)}
+
+% --- STFT, WDF, CWT ---
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/112l2_stft_wdf.pdf}
+	
+	(α)
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/112l2_cwt.pdf}
+	
+	(β)
+\end{minipage}
+\vfill
+\caption{(α) Short Time Fourier Transform και Wigner Distribution Function (β) Wavelet Transform (Morlet, Morse wavelets) του σήματος.}
+\label{fig:112l2_stft_wdf_wt}
+\end{figure}
+
+
+% --- DWT ---
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/112l2_dwt1.pdf}
+	
+	(α)
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/112l2_dwt2.pdf}
+	
+	(β)
+\end{minipage}
+\vfill
+\caption{Wavelet Decomposition του σήματος χρησιμοποιώντας wavelet (α) Haar (β) Symlet4.}
+\label{fig:112l2_dwt}
+\end{figure}
+
+
+% --- EMD/HHT ---
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/112l2_emd.pdf}
+	
+	(α)
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/112l2_hht.pdf}
+	
+	(β)
+\end{minipage}
+\vfill
+\caption{(α) Emperical Mode Decomposition (β) Hilbert-Huang Transform του σήματος.}
+\label{fig:112l2_hht}
+\end{figure}
+
+
+% --- EEMD/HHT ---
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/112l2_emd_ensemble.pdf}
+	
+	(α)
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/112l2_hht_ensemble.pdf}
+	
+	(β)
+\end{minipage}
+\vfill
+\caption{(α) Ensemble Emperical Mode Decomposition (β) Hilbert-Huang Transform του σήματος με $n_{ens}=50$ και $\sigma_n = 0.1$.}
+\label{fig:112l2_hht_ensemble}
+\end{figure}
+
+
+\subsection*{123}
+
+% --- STFT, WDF, CWT ---
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/123l1_stft_wdf.pdf}
+	
+	(α)
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/123l1_cwt.pdf}
+	
+	(β)
+\end{minipage}
+\vfill
+\caption{(α) Short Time Fourier Transform και Wigner Distribution Function (β) Wavelet Transform (Morlet, Morse wavelets) του σήματος.}
+\label{fig:123l1_stft_wdf_wt}
+\end{figure}
+
+
+% --- DWT ---
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/123l1_dwt1.pdf}
+	
+	(α)
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/123l1_dwt2.pdf}
+	
+	(β)
+\end{minipage}
+\vfill
+\caption{Wavelet Decomposition του σήματος χρησιμοποιώντας wavelet (α) Haar (β) Symlet4.}
+\label{fig:123l1_dwt}
+\end{figure}
+
+
+% --- EMD/HHT ---
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/123l1_emd.pdf}
+	
+	(α)
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/123l1_hht.pdf}
+	
+	(β)
+\end{minipage}
+\vfill
+\caption{(α) Emperical Mode Decomposition (β) Hilbert-Huang Transform του σήματος.}
+\label{fig:123l1_hht}
+\end{figure}
+
+
+% --- EEMD/HHT ---
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/123l1_emd_ensemble.pdf}
+	
+	(α)
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/123l1_hht_ensemble.pdf}
+	
+	(β)
+\end{minipage}
+\vfill
+\caption{(α) Ensemble Emperical Mode Decomposition (β) Hilbert-Huang Transform του σήματος με $n_{ens}=50$ και $\sigma_n = 0.1$.}
+\label{fig:123l1_hht_ensemble}
+\end{figure}
+
+\subsection*{118}
+
+% --- STFT, WDF, CWT ---
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/118l1_stft_wdf.pdf}
+	
+	(α)
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/118l1_cwt.pdf}
+	
+	(β)
+\end{minipage}
+\vfill
+\caption{(α) Short Time Fourier Transform και Wigner Distribution Function (β) Wavelet Transform (Morlet, Morse wavelets) του σήματος.}
+\label{fig:118l1_stft_wdf_wt}
+\end{figure}
+
+
+% --- DWT ---
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/118l1_dwt1.pdf}
+	
+	(α)
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/118l1_dwt2.pdf}
+	
+	(β)
+\end{minipage}
+\vfill
+\caption{Wavelet Decomposition του σήματος χρησιμοποιώντας wavelet (α) Haar (β) Symlet4.}
+\label{fig:118l1_dwt}
+\end{figure}
+
+
+% --- EMD/HHT ---
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/118l1_emd.pdf}
+	
+	(α)
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/118l1_hht.pdf}
+	
+	(β)
+\end{minipage}
+\vfill
+\caption{(α) Emperical Mode Decomposition (β) Hilbert-Huang Transform του σήματος.}
+\label{fig:118l1_hht}
+\end{figure}
+
+
+% --- EEMD/HHT ---
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/118l1_emd_ensemble.pdf}
+	
+	(α)
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/118l1_hht_ensemble.pdf}
+	
+	(β)
+\end{minipage}
+\vfill
+\caption{(α) Ensemble Emperical Mode Decomposition (β) Hilbert-Huang Transform του σήματος με $n_{ens}=50$ και $\sigma_n = 0.1$.}
+\label{fig:118l1_hht_ensemble}
+\end{figure}
+
+\subsection*{217}
+
+% --- STFT, WDF, CWT ---
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/217l1_stft_wdf.pdf}
+	
+	(α)
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/217l1_cwt.pdf}
+	
+	(β)
+\end{minipage}
+\vfill
+\caption{(α) Short Time Fourier Transform και Wigner Distribution Function (β) Wavelet Transform (Morlet, Morse wavelets) του σήματος.}
+\label{fig:217l1_stft_wdf_wt}
+\end{figure}
+
+
+% --- DWT ---
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/217l1_dwt1.pdf}
+	
+	(α)
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/217l1_dwt2.pdf}
+	
+	(β)
+\end{minipage}
+\vfill
+\caption{Wavelet Decomposition του σήματος χρησιμοποιώντας wavelet (α) Haar (β) Symlet4.}
+\label{fig:217l1_dwt}
+\end{figure}
+
+
+% --- EMD/HHT ---
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/217l1_emd.pdf}
+	
+	(α)
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/217l1_hht.pdf}
+	
+	(β)
+\end{minipage}
+\vfill
+\caption{(α) Emperical Mode Decomposition (β) Hilbert-Huang Transform του σήματος.}
+\label{fig:217l1_hht}
+\end{figure}
+
+
+% --- EEMD/HHT ---
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/217l1_emd_ensemble.pdf}
+	
+	(α)
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/217l1_hht_ensemble.pdf}
+	
+	(β)
+\end{minipage}
+\vfill
+\caption{(α) Ensemble Emperical Mode Decomposition (β) Hilbert-Huang Transform του σήματος με $n_{ens}=50$ και $\sigma_n = 0.1$.}
+\label{fig:217l1_hht_ensemble}
+\end{figure}
+
+\subsection*{221}
+
+% --- STFT, WDF, CWT ---
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/221l1_stft_wdf.pdf}
+	
+	(α)
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/221l1_cwt.pdf}
+	
+	(β)
+\end{minipage}
+\vfill
+\caption{(α) Short Time Fourier Transform και Wigner Distribution Function (β) Wavelet Transform (Morlet, Morse wavelets) του σήματος.}
+\label{fig:221l1_stft_wdf_wt}
+\end{figure}
+
+
+% --- DWT ---
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/221l1_dwt1.pdf}
+	
+	(α)
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/221l1_dwt2.pdf}
+	
+	(β)
+\end{minipage}
+\vfill
+\caption{Wavelet Decomposition του σήματος χρησιμοποιώντας wavelet (α) Haar (β) Symlet4.}
+\label{fig:221l1_dwt}
+\end{figure}
+
+
+% --- EMD/HHT ---
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/221l1_emd.pdf}
+	
+	(α)
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/221l1_hht.pdf}
+	
+	(β)
+\end{minipage}
+\vfill
+\caption{(α) Emperical Mode Decomposition (β) Hilbert-Huang Transform του σήματος.}
+\label{fig:221l1_hht}
+\end{figure}
+
+
+% --- EEMD/HHT ---
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/221l1_emd_ensemble.pdf}
+	
+	(α)
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fig/221l1_hht_ensemble.pdf}
+	
+	(β)
+\end{minipage}
+\vfill
+\caption{(α) Ensemble Emperical Mode Decomposition (β) Hilbert-Huang Transform του σήματος με $n_{ens}=50$ και $\sigma_n = 0.1$.}
+\label{fig:221l1_hht_ensemble}
+\end{figure}
 
 \end{document}

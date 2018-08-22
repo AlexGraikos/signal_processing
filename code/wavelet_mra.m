@@ -1,4 +1,4 @@
-function [c,l] = wavelet_mra(sig,n,wname)
+function [fig,c,l] = wavelet_mra(sig,n,wname)
 % [c,l] = wavelet_mra(sig,n,wname)
 % Decomposes input signal into multi-resolution components.
 %
@@ -20,12 +20,11 @@ detailed = detcoef(c,l,'cells');
 N = length(sig);
 
 % Plot signal
-figure();
+fig = figure();
 sp(1) = subplot(n+2,1,1);
 plot(sig);
-text(length(sig)/2, 4+max(ylim), [wname,' Wavelet MRA'], ... 
-    'HorizontalAlignment', 'center', 'FontSize', 12);
-title('Input signal');
+title({['Wavelet Decomposition (n=', num2str(n), ', ', wname, ' Wavelet)'], ...
+    'Input signal'});
 
 % Plot detail coefficients (interpolated to N samples)
 for i=1:n

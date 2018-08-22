@@ -1,4 +1,4 @@
-function [imf,inst_freq,inst_amp] = hilbert_huang(sig,fs,nstd,ensemble)
+function [emd_fig,hht_fig,imf,inst_freq,inst_amp] = hilbert_huang(sig,fs,nstd,ensemble)
 % [imf,inst_freq] = hilbert_huang(sig,fs,nstd,ensemble)
 % Applies HHT on input signal.
 %
@@ -22,13 +22,11 @@ residual = emd_result(:,end);
 num_imfs = size(imf,2);
 
 % Plot IMFs and residual
-figure();
+emd_fig = figure();
 sp1(1) = subplot(size(emd_result,2),1,1);
 plot(sig);
-title('Input Signal');
-text(length(sig)/2, 7+max(ylim), ... 
-    [num2str(ensemble) ' ensemble nstd=' num2str(nstd)], ... 
-    'HorizontalAlignment', 'center', 'FontSize', 12);
+title({['EMD (ensembles=' num2str(ensemble) ' nstd=' num2str(nstd) ')'], ' ', ... 
+    'Input Signal'});
 for k=1:num_imfs
     sp1(k+1) = subplot(size(emd_result,2),1,k+1);
     plot(imf(:,k));
@@ -49,13 +47,11 @@ for k = 1:num_imfs
 end
 
 % Plot HHT
-figure();
+hht_fig = figure();
 sp2(1) = subplot(num_imfs+1,1,1);
 plot(sig);
-title('Input Signal');
-text(length(sig)/2, 5+max(ylim), ... 
-    [num2str(ensemble) ' ensemble nstd=' num2str(nstd)], ... 
-    'HorizontalAlignment', 'center', 'FontSize', 12);
+title({['Hilbert-Huang Transform (ensembles=' num2str(ensemble) ' nstd=' num2str(nstd) ')'], ' ', ... 
+    'Input Signal'});
 
 xval = 1:length(sig)-1;
 for k=1:num_imfs
