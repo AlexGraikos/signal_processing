@@ -32,8 +32,8 @@ if (multi_plot)
 else
     figure();
     sp(1) = subplot(2,1,1);
-    imagesc([t_lab(1) t_lab(end)], [w(1) w(end)], log10(abs(sig_t)));
-    xlabel('Time (s)');
+    imagesc([0 length(sig)], [w(1) w(end)], log10(abs(sig_t)));
+    xlabel('Samples');
     ylabel('Frequency (Hz)');
     title({'Short Time Fourier Transform (Hamming window)', [' win\_len=', num2str(win_len), ... 
         ' overlap=',num2str(100*overlap),'%']});
@@ -41,12 +41,10 @@ else
 
     % Plot input signal
     sp(2) = subplot(2,1,2);
-    ts = (0:(length(sig)-1))*1/fs;
-    plot(ts,sig);
-    xlim([0 ts(end)]);
+    plot(sig);
     title('Input Signal');
-    xlabel('Time (s)');
-    ylabel('s[t]');
+    xlabel('Samples');
+    ylabel('s[n]');
     linkaxes(sp, 'x'); % Link x axes of subplots
 end
 
