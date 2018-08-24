@@ -66,7 +66,7 @@ gather_results(123,1,110001,125000,params);
 close all;
 
 
-%% Signal 118 (lead 1)
+%% Signal 118 (lead 1)  
 params{1} = 150; % RBBB lengthens QRS complex, can increase time window for better freq resolution
 params{2} = 0.5;
 params{3} = 150; % APCs/PVCs contain different frequencies and could be discerned
@@ -87,18 +87,18 @@ close all;
 
 
 %% Signal 217 (lead 1)
-params{1} = 120; % Needs smaller win_len for better time resolution. 
+params{1} = 100; % Needs smaller win_len for better time resolution. 
                  % Difficult to discern between different types of pulses
 params{2} = 0.5; % PVCs can be a bit more discernable. Lower freqs are amplified during PVCs.
-params{3} = 150;
+params{3} = 110;
 params{4} = 0.5;
 params{5} = 'amor'; % PVCs much more easier to discern. Lower freqs have highter amplitude during PVCs.
 params{6} = [];
 params{7} = 'morse'; % Same as morlet but with sharper results
 params{8} = [1.5 3];
-params{9} = 10;
-params{10} = 'db3'; % Needs more detail levels to locate PVCs
-params{11} = 10;
+params{9} = 8;
+params{10} = 'db4'; % Needs more detail levels to locate PVCs
+params{11} = 8;
 params{12} = 'bior1.3'; % PVCs appear in some of the higher detail signals.
                         % The higher the signal the lower the resolution
                         % though
@@ -111,18 +111,18 @@ close all;
 
 
 %% Signal 221 (lead 1)
-params{1} = 120; % Really difficult to discern different beats. Maybe some lower freqs amplified.
+params{1} = 110; % Really difficult to discern different beats. Maybe some lower freqs amplified.
                  % Atrial fibrillation is clearly visible.
 params{2} = 0.5; % Abnormal beats (PVCs) easier to discern. Lower freqs clearly have higher amplitude.
-params{3} = 150;
+params{3} = 100;
 params{4} = 0.5;
 params{5} = 'amor'; % PVCs distinguishable. Lower freqs of PVC beat are apparent.
 params{6} = [];
 params{7} = 'morse'; % PVCs still discernable. Higher sharpness allows better localization of R-R intervals.
 params{8} = [1.5 3];
-params{9} = 10;
-params{10} = 'db3'; % PVCs are located in high detail coeffs.
-params{11} = 10;
+params{9} = 8;
+params{10} = 'db4'; % PVCs are located in high detail coeffs.
+params{11} = 8;
 params{12} = 'bior1.3'; % Clearer results than db3 wavelet.
 params{13} = 100;
 params{14} = 0.1; % EEMD is a must. Heart rate IMF is all over the place cause of atrial fibrillation.
