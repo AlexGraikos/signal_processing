@@ -36,13 +36,13 @@ params{13} = 100;
 params{14} = 0.1;
 
 % gather_results(record_number, lead, n0, n1, parameters)
-gather_results(112,1,1,1000,params);
+gather_results(112,1,20001,35000,params);
 close all;
 
 
 %% Signal 112 (lead 2)
 % Use same parameters as before (signal 112 lead 1)
-gather_results(112,2,1,1000,params);
+gather_results(112,2,20001,35000,params);
 close all;
 
 
@@ -62,7 +62,7 @@ params{12} = 'bior1.3';
 params{13} = 100;
 params{14} = 0.1; % Mode mixing seems to be reduced by applying EEMD
 
-gather_results(123,1,1,1000,params);
+gather_results(123,1,110001,125000,params);
 close all;
 
 
@@ -82,7 +82,7 @@ params{12} = 'bior1.3';
 params{13} = 100;
 params{14} = 0.1; % Mode mixing not as apparent. More likely in higher IMFs
 
-gather_results(118,1,1,1000,params);
+gather_results(118,1,350001,365000,params);
 close all;
 
 
@@ -106,7 +106,7 @@ params{13} = 100;
 params{14} = 0.1; % Heavy mode mixing. IMF that follows heart rate is disturbed when PVCs appear.
                   % There is an IMF that detects abnormal beats.
 
-gather_results(217,1,1,1000,params);
+gather_results(217,1,180001,195000,params);
 close all;
 
 
@@ -128,6 +128,6 @@ params{13} = 100;
 params{14} = 0.1; % EEMD is a must. Heart rate IMF is all over the place cause of atrial fibrillation.
                   % PVC detecting IMF is weaker but still exists.
 
-gather_results(221,1,1,1000,params);
+gather_results(221,1,60001,75000,params);
 close all;
 

@@ -3,7 +3,7 @@ function detect_rr_intervals(record_number,lead)
 [sig,fs,tm,ann,anntype] = load_signal(record_number,lead);
 close gcf;
 
-n = 5;
+n = 10;
 wname = 'db6'; % Wavelet to use
 [c,l] = wavedec(sig,n,wname);
 
@@ -32,8 +32,8 @@ auto_coeffs = autocorr(freq_peaks,500); % Autocorr finds mean distance
 min_peak_dist = (i+149)*0.8; % 80% of interval is used as min peak distance
 
 % Locate peaks in square of reconstructed signal
-min_prominence = 0.5;
-[peaks,peak_locs] = findpeaks(rrsig.^2,'MinPeakDistance',min_peak_dist,'MinPeakProminence',min_prominence);
+
+[peaks,peak_locs] = findpeaks(rrsig.^2,'MinPeakDistance',min_peak_dist,'MinPeakHeight',0.5);
 
 % Plot results
 figure();
@@ -48,7 +48,9 @@ title('Input signal with located R peaks');
 legend({'Signal','Detected','True'});
 
 sp2(2) = subplot(2,1,2);
-plot(rrsig);
+plot(rrsig.^2);
+hold on;
+stem(peak_locs,rrsig(peak_locs).^2,'x','LineStyle','none');
 linkaxes(sp2,'x');
 title('Reconstructed signal');
 
