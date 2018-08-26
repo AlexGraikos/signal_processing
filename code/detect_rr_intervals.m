@@ -1,5 +1,6 @@
 function detect_rr_intervals(record_number,lead,n0,n1)
 
+
 [sig,fs,tm,ann,anntype] = load_signal(record_number,lead);
 sig_prefix = ['report/fig/' num2str(record_number) 'l' num2str(lead)];
 close gcf;
@@ -12,6 +13,7 @@ else
     save_plot = 1;
 end
 
+tic;
 n = 10;
 wname = 'db6'; % Wavelet to use
 [c,l] = wavedec(sig,n,wname);
@@ -42,6 +44,7 @@ min_peak_dist = (i+149)*0.8; % 80% of interval is used as min peak distance
 
 % Locate peaks in square of reconstructed signal
 [peaks,peak_locs] = findpeaks(rrsig.^2,'MinPeakDistance',min_peak_dist,'MinPeakHeight',5*mean(rrsig.^2));
+toc;
 
 % Plot results
 figure();
@@ -58,5 +61,20 @@ ylim([min(sig) max(sig)])
 if (save_plot)
     print([sig_prefix '_detected_peaks'],'-dpdf','-bestfit');
 end
+
+% Distance matrix
+m1 = length(peak_true);
+m2 = length(peak_locs);
+distMat = abs(repmat(peak_true,1,m2) - repmat(peak_locs',m1,1));
+
+% Calculate accuracy of algorithm
+radius = 20; % Samples
+TP = sum(sum(distMat < radius));
+FN = sum(sum(distMat < radius,2) == 0);
+FP = sum(sum(distMat < radius) == 0);
+
+fprintf('TP: %d, FN: %d, FP: %d\n', TP, FN, FP);
+fprintf('Accuracy: %f %% \n', 100*TP/(TP+FN+FP));
+
 
 end
