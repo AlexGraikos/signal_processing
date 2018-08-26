@@ -131,3 +131,13 @@ params{14} = 0.1; % EEMD is a must. Heart rate IMF is all over the place cause o
 gather_results(221,1,60001,75000,params);
 close all;
 
+%% Detect R-R peaks in signals
+
+detect_rr_intervals(112,1,150000,175000);
+detect_rr_intervals(112,2,150000,175000);
+detect_rr_intervals(123,1,230000,245000);
+detect_rr_intervals(118,1,60000,75000);
+detect_rr_intervals(217,1,510000,525000);
+detect_rr_intervals(221,1,300000,315000);
+close all;
+

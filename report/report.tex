@@ -11,7 +11,7 @@
 \usepackage[bottom]{footmisc}
 \usepackage{amsmath}
 \usepackage{array}
-\usepackage{algorithm2e}
+\usepackage{algpseudocode,algorithm,algorithmicx} 
 \setitemize{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
 \usepackage{geometry}
  \geometry{
@@ -25,6 +25,15 @@
 
 
 \renewcommand{\figurename}{Σχήμα}
+
+\newcommand*\Let[6]{\State #1 $\gets$ #2}  
+\algrenewcommand\algorithmicrequire{\textbf{Είσοδος}}  
+\algrenewcommand\algorithmicensure{\textbf{Έξοδος}}
+
+\makeatletter  % Add this!!!!
+ \renewcommand{\ALG@name}{Αλγόριθμος} %doesnt work
+\makeatother   % Add this also
+\renewcommand{\listalgorithmname}{Λίστα Αλγορίθμων}
 
 \title{Προηγμένες Τεχνικές Επεξεργασίας Σήματος\\Δεύτερη Εργασία}
 
@@ -68,6 +77,7 @@
 Τα IMFs που προκύπτουν από τον HHT δεν έχουν καθορισμένο συχνοτικό περιεχόμενο, αλλά προσαρμόζονται στο περιεχόμενο του σήματος. Ένα πλήθος από IMFs συνθέτει τα QRS complexes και τους μη κανονικούς παλμούς, ενώ άλλα περιγράφουν τον καρδιακό ρυθμό και τις αργές μεταβολές. Χρησιμοποιώντας τον απλό EMD, τα IMFs έχουν επικαλυπτόμενες συχνότητες και αδυνατούν να διακρίνουν πλήρως τις συνιστώσες του σήματος. Εφαρμόζοντας τον Ensemble EMD για να αντιμετωπίσουμε το mode mixing, αναγκάζουμε κάποια IMFs να μοντελοποιήσουν τον θόρυβο (ο οποίος θα αναιρεθεί αν το πλήθος των ensembles είναι ικανά μεγάλο), ενώ τα υπόλοιπα διαχωρίζουν εντονότερα το συχνοτικό περιεχόμενο μεταξύ τους.
 
 Η ανάλυση του σήματος σε συνιστώσες μας επιτρέπει να αναγνωρίσουμε χαρακτηριστικά του, που δεν είναι διαχωρίσιμα στο πεδίο του χρόνου. Για παράδειγμα, από τον μετασχηματισμό Hilbert του IMF που περιγράφει τον καρδιακό ρυθμό, μπορούμε παρατηρώντας την στιγμιαία συχνότητα, να διακρίνουμε αν ο ασθενής έχει αρρυθμία.
+
 
 \subsubsection*{Σήμα 112}
 
@@ -365,7 +375,7 @@
 	\includegraphics[width=\textwidth]{fig/217l1_cwt.pdf}
 \end{minipage}
 \vfill
-\caption{STFT, WDF και συνεχής Wavelet Transform του σήματος 217.}
+\caption{STFT, WDF και συνεχής Wavelet Transform του σήματος 217. Οι γρήγορες μεταβολές του σήματος απαιτούν και μικρότερο εύρος παραθύρου, θυσιάζοντας αναλυτικότητα στην συχνότητα. Οι μη-κανονικοί παλμοί είναι ευδιάκριτοι στον WT.}
 \label{fig:217l1_stft_wdf_wt}
 \end{figure}
 
@@ -373,16 +383,16 @@
 % --- DWT ---
 \begin{figure}[H]
 \centering
-\begin{minipage}{0.48\textwidth}
+\begin{minipage}{0.46\textwidth}
 	\centering
 	\includegraphics[width=\textwidth]{fig/217l1_dwt1.pdf}
 \end{minipage}
-\begin{minipage}{0.48\textwidth}
+\begin{minipage}{0.46\textwidth}
 	\centering
 	\includegraphics[width=\textwidth]{fig/217l1_dwt2.pdf}
 \end{minipage}
 \vfill
-\caption{Διακριτός WT του σήματος χρησιμοποιώντας db4 και bior1.3.}
+\caption{Διακριτός WT του σήματος χρησιμοποιώντας db4 και bior1.3. Αναλύουμε σε περισσότερα επίπεδα για να εξάγουμε πληροφορία και για τους μη-κανονικούς παλμούς ($d_{7-9}$).}
 \label{fig:217l1_dwt}
 \end{figure}
 
@@ -399,7 +409,7 @@
 	\includegraphics[width=\textwidth]{fig/217l1_hht.pdf}
 \end{minipage}
 \vfill
-\caption{EMD και HHT του σήματος.}
+\caption{EMD και HHT του σήματος. Τα $IMF_{6-7}$ προσεγγίζουν τους μη κανονικούς παλμούς. Δεν εμφανίζεται έντονο mode mixing.}
 \label{fig:217l1_hht}
 \end{figure}
 
@@ -416,7 +426,7 @@
 	\includegraphics[width=\textwidth]{fig/217l1_hht_ensemble.pdf}
 \end{minipage}
 \vfill
-\caption{EEMD και HHT με $n_{ens}=100$ και $\sigma_n = 0.1$.}
+\caption{EEMD και HHT με $n_{ens}=100$ και $\sigma_n = 0.1$. Ξεχωρίζουν περισσότερο οι συχνότητες μεταξύ των IMFs, χωρίς όμως να κερδίζουμε κάποια παραπάνω πληροφορία για το αρχικό σήμα.}
 \label{fig:217l1_hht_ensemble}
 \end{figure}
 
@@ -434,7 +444,7 @@
 	\includegraphics[width=\textwidth]{fig/221l1_cwt.pdf}
 \end{minipage}
 \vfill
-\caption{STFT, WDF και συνεχής WT του σήματος 221.}
+\caption{STFT, WDF και συνεχής WT του σήματος 221. Οι μη-κανονικοί παλμοί διακρίνονται από τις χαμηλές συχνότητες που φέρουν κατά την εμφάνισή τους. Παρατηρείται από τις κορυφές των μετασχηματισμών πως τα διαστήματα R-R δεν είναι σταθερά, λόγω αρρυθμίας του ασθενούς.}
 \label{fig:221l1_stft_wdf_wt}
 \end{figure}
 
@@ -442,16 +452,16 @@
 % --- DWT ---
 \begin{figure}[H]
 \centering
-\begin{minipage}{0.48\textwidth}
+\begin{minipage}{0.46\textwidth}
 	\centering
 	\includegraphics[width=\textwidth]{fig/221l1_dwt1.pdf}
 \end{minipage}
-\begin{minipage}{0.48\textwidth}
+\begin{minipage}{0.46\textwidth}
 	\centering
 	\includegraphics[width=\textwidth]{fig/221l1_dwt2.pdf}
 \end{minipage}
 \vfill
-\caption{Διακριτός WT του σήματος χρησιμοποιώντας db4 και bior1.3.}
+\caption{Διακριτός WT του σήματος χρησιμοποιώντας db4 και bior1.3. Οι συντελεστές $d_{7-9}$ περιέχουν την πληροφορία των μη κανονικών παλμών.}
 \label{fig:221l1_dwt}
 \end{figure}
 
@@ -468,7 +478,7 @@
 	\includegraphics[width=\textwidth]{fig/221l1_hht.pdf}
 \end{minipage}
 \vfill
-\caption{EMD και HHT του σήματος.}
+\caption{EMD και HHT του σήματος. Εμφανίζεται έντονο mode mixing που δυσκολεύει την εξαγωγή συμπερασμάτων.}
 \label{fig:221l1_hht}
 \end{figure}
 
@@ -485,13 +495,139 @@
 	\includegraphics[width=\textwidth]{fig/221l1_hht_ensemble.pdf}
 \end{minipage}
 \vfill
-\caption{EEMD και HHT με $n_{ens}=100$ και $\sigma_n = 0.1$.}
+\caption{EEMD και HHT με $n_{ens}=100$ και $\sigma_n = 0.1$. Μειώνοντας το mode mixing, μπορούμε να διακρίνουμε στα $IMF_{6}$ και $IMF_{7}$ την εμφάνιση των μη κανονικών παλμών και την αστάθεια του καρδιακού ρυθμού λόγω κολπικής μαρμαρυγής αντίστοιχα.}
 \label{fig:221l1_hht_ensemble}
 \end{figure}
 
 \section*{Ανίχνευση διαστημάτων R-R}
 
-Ο αλγόριθμος που κατασκευάσαμε για την ανίχνευση των διαστημάτων R-R είναι ο εξής
+Για να ανιχνεύσουμε τα διαστήματα R-R στα σήματα ECG που δίνονται κατασκευάσαμε δύο αλγορίθμους. Ο πρώτος αλγόριθμος υπολογίζει το μέσο διάστημα R-R σε ένα σήμα και χρησιμοποιείται σε συνδυασμό με τον δεύτερο που υπολογίζει τα δείγματα στα οποία εμφανίζονται οι κορυφές R.
+
+\begin{algorithm}  
+  \caption{Υπολογισμός μέσου εύρους διαστήματος R-R.}
+  \label{alg:mean_rr_interval}  
+  \begin{algorithmic}[1]  
+    \Require{Δείγματα ECG $[s_1,s_2,...,s_N]$.}  
+  	\Ensure{Μέσο εύρος $l_{R-R}$ του διαστήματος R-R.}
+  	
+  	\State Υπολόγισε τον συνεχή WT του σήματος s.
+  	\State Μηδένισε τους συντελεστές που δεν ανήκουν στις κυρίαρχες συχνότητες 15-30Hz του QRS complex.
+  	\State Άθροισε, για κάθε δείγμα, τα μέτρα των φιλτραρισμένων συντελεστών για να υπολογίσεις την ενέργεια τους.
+  	\State Υπολόγισε την αυτοσυσχέτιση της ενέργειας των συντελεστών.
+  	\State Βρες τη μέση διάρκεια του διαστήματος R-R ως το δεύτερο τοπικό μέγιστο των συντελεστών της αυτοσυσχέτισης.
+  	
+  \end{algorithmic}  
+\end{algorithm}
+
+\begin{algorithm}  
+  \caption{Ανίχνευση κορυφών R σε σήμα ECG.}
+  \label{alg:detect_rr_intervals}  
+  \begin{algorithmic}[1]  
+    \Require{Δείγματα ECG $[s_1,s_2,...,s_N]$.}  
+  	\Ensure{Διάνυσμα $[n_1,n_2,...,n_k]$ των δειγμάτων στα οποία εντοπίστηκαν κορυφές R.}
+  	
+  	\State Υπολόγισε τους συντελεστές του διακριτού WT, χρησιμοποιώντας το db6 κυματίδιο, για $n>5$ επίπεδα.
+  	\State Ανακατασκεύασε το αρχικό σήμα χρησιμοποιώντας μόνο τους συντελεστές $d_{2-5}$, που περιέχουν το κύριο συχνοτικό περιεχόμενο των QRS complexes.
+  	\State Υπολόγισε την ενέργεια του ανακατασκευασμένου σήματος.
+  	\State Υπολόγισε το μέσο διάστημα R-R, για ένα τμήμα του σήματος, με τον Αλγόριθμο \ref{alg:mean_rr_interval}.
+  	\State Βρες τα τοπικά μέγιστα στο σήμα ενέργειας, που απέχουν τουλάχιστον $80\%$ του μέσου διαστήματος $l_{R-R}$.
+  	
+  \end{algorithmic}  
+\end{algorithm}
+
+Από τον Αλγόριθμο \ref{alg:detect_rr_intervals} παίρνουμε τις θέσεις των κορυφών R και με εφαρμογή πρώτων διαφορών, υπολογίζουμε τα διαστήματα R-R. Στον δεύτερο αλγόριθμο δοκιμάσαμε να φιλτράρουμε τα τοπικά μέγιστα με ένα κατώφλι, ανάλογο της συνολικής ενέργειας του ανακατασκευασμένου σήματος. Με αυτόν τον τρόπο πετυχαίνουμε να αγνοήσουμε τους μη-κανονικούς παλμούς, που φέρουν λιγότερη ενέργεια σε αυτές τις συχνότητες καθώς συνθέτονται κυρίως από χαμηλότερες μπάντες ($d_{7-9}$).
+
+Στα \figurename{τα \ref{fig:algorithm1}, \ref{fig:algorithm2}, \ref{fig:algorithm3}} παρουσιάζεται γραφικά η λειτουργία των δύο παραπάνω αλγορίθμων.
+
+% --- Algorithm description figures ---
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth, trim={0 5cm 0 5cm}, clip]{fig/filtered_wt.pdf}
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth, trim={0 5cm 0 5cm}, clip]{fig/wt_energy.pdf}
+\end{minipage}
+\vfill
+\caption{Κύριες συχνότητες του QRS και η ενέργεια που φέρουν οι συντελεστές στον χρόνο.}
+\label{fig:algorithm1}
+\end{figure}
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth, trim={0 5cm 0 5cm}, clip]{fig/autocorr_wt.pdf}
+	(α)
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth, trim={0 0 0 0}, clip]{fig/detect_mra.pdf}
+	(β)
+\end{minipage}
+\vfill
+\caption{(α) Αυτοσυσχέτιση της ενέργειας των συχνοτήτων του QRS complex. (β) Διακριτός WT με χρήση του db6 κυματιδίου.}
+\label{fig:algorithm2}
+\end{figure}
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth, trim={0 5cm 0 5cm}, clip]{fig/reconstructed.pdf}
+	(α)
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth, trim={0 5cm 0 5cm}, clip]{fig/reconstructed_energy.pdf}
+	(β)
+\end{minipage}
+\vfill
+\caption{(α) Ανακατασκευή του αρχικού σήματος από τους συντελεστές $d_{2-5}$ και (β) ενέργεια του σήματος αυτού.}
+\label{fig:algorithm3}
+\end{figure}
+
+\subsection*{Αποτελέσματα εφαρμογής αλγορίθμου ανίχνευσης διαστημάτων R-R}
+
+% --- R-R peak detection ---
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth, trim={0 5cm 0 5cm}, clip]{fig/112l1_detected_peaks.pdf}
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth, trim={0 5cm 0 5cm}, clip]{fig/112l2_detected_peaks.pdf}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth, trim={0 5cm 0 5cm}, clip]{fig/123l1_detected_peaks.pdf}
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth, trim={0 5cm 0 5cm}, clip]{fig/118l1_detected_peaks.pdf}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth, trim={0 5cm 0 5cm}, clip]{fig/217l1_detected_peaks.pdf}
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth, trim={0 5cm 0 5cm}, clip]{fig/221l1_detected_peaks.pdf}
+\end{minipage}
+\vfill
+\caption{Αποτελέσματα της εφαρμογής του αλγορίθμου ανίχνευσης κορυφών R-R στα σήματα που αναλύσαμε.}
+\label{fig:detected_peaks}
+\end{figure}
 
 
 \end{document}
