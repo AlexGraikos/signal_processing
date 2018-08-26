@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2018.4.10)  26 AUG 2018 21:13
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2018.4.10)  26 AUG 2018 23:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -737,8 +737,13 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 [1
 
 ]
+File: fig/cont_wavelets.pdf Graphic file (type QTm)
+ <use  "fig/cont_wavelets.pdf" >
+File: fig/discrete_wavelets.pdf Graphic file (type QTm)
+ <use  "fig/discrete_wavelets.pdf" >
 File: fig/112l1_stft_wdf.pdf Graphic file (type QTm)
- <use  "fig/112l1_stft_wdf.pdf" >
+
+<use  "fig/112l1_stft_wdf.pdf" >
 File: fig/112l1_cwt.pdf Graphic file (type QTm)
  <use  "fig/112l1_cwt.pdf" > [2]
 File: fig/112l1_dwt1.pdf Graphic file (type QTm)
@@ -865,18 +870,18 @@ File: fig/autocorr_wt.pdf Graphic file (type QTm)
 
 <use  "fig/autocorr_wt.pdf" >
 File: fig/detect_mra.pdf Graphic file (type QTm)
- <use  "fig/detect_mra.pdf" > [15]
+ <use  "fig/detect_mra.pdf" >
 File: fig/reconstructed.pdf Graphic file (type QTm)
 
 <use  "fig/reconstructed.pdf" >
 File: fig/reconstructed_energy.pdf Graphic file (type QTm)
- <use  "fig/reconstructed_energy.pdf" > [16]
+ <use  "fig/reconstructed_energy.pdf" > [15]
+[16]
 File: fig/112l1_detected_peaks.pdf Graphic file (type QTm)
-
-<use  "fig/112l1_detected_peaks.pdf" >
+ <use  "fig/112l1_detected_peaks.pdf" >
 File: fig/112l2_detected_peaks.pdf Graphic file (type QTm)
- <use  "fig/112l2_detected_peaks.pdf" >
-[17]
+
+<use  "fig/112l2_detected_peaks.pdf" >
 File: fig/123l1_detected_peaks.pdf Graphic file (type QTm)
  <use  "fig/123l1_detected_peaks.pdf" >
 File: fig/118l1_detected_peaks.pdf Graphic file (type QTm)
@@ -886,12 +891,12 @@ File: fig/217l1_detected_peaks.pdf Graphic file (type QTm)
  <use  "fig/217l1_detected_peaks.pdf" >
 File: fig/221l1_detected_peaks.pdf Graphic file (type QTm)
 
-<use  "fig/221l1_detected_peaks.pdf" > [18] (./report.aux) ) 
+<use  "fig/221l1_detected_peaks.pdf" > [17] [18] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 16449 strings out of 493638
- 311712 string characters out of 6146796
- 329522 words of memory out of 5000000
- 19661 multiletter control sequences out of 15000+600000
+ 16454 strings out of 493638
+ 311810 string characters out of 6146796
+ 329531 words of memory out of 5000000
+ 19664 multiletter control sequences out of 15000+600000
  8358 words of font info for 51 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
  55i,9n,61p,10394b,323s stack positions out of 5000i,500n,10000p,200000b,80000s

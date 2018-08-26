@@ -55,6 +55,7 @@ hold on;
 stem(peak_true,sig(peak_true),'LineStyle','none','Color','g');
 hold off;
 title(['Signal ' num2str(record_number) ' (lead ' num2str(lead) ') detected/true R peaks']);
+xlabel('Samples');
 legend({'Signal','Detected','True'});
 xlim([n0 n1]);
 ylim([min(sig) max(sig)])
