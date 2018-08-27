@@ -1,0 +1,169 @@
+\documentclass{beamer}
+
+\usepackage{xltxtra} 
+\usepackage{xgreek} 
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{fontspec}
+
+\usetheme{Madrid}
+\usecolortheme{whale}
+
+\usefonttheme{professionalfonts} % using non standard fonts for beamer
+\usefonttheme{serif} % default family is serif
+\setmainfont{GFS Didot} 
+
+\makeatletter
+\defbeamertemplate*{footline}{Dan P theme}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.2\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor\expandafter\beamer@ifempty\expandafter{\beamer@shortinstitute}{}{~~(\insertshortinstitute)}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.6\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.2\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+\insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\makeatother
+
+\def\todayshort{\leavevmode\hbox{\twodigits\day-\twodigits\month-\the\year}}
+\def\twodigits#1{\ifnum#1<10 0\fi\the#1}
+
+\title[Προηγμένες Τεχνικές Επεξεργασίας Σήματος]{Προηγμένες Τεχνικές Επεξεργασίας Σήματος}
+ 
+\subtitle{Δεύτερη Εργασία 2017-2018}
+ 
+\author[Γραικός Α., Θώμος Μ.]{Γραικός Αλέξανδρος 8128 \\ Θώμος Μάριος ΧΧΧΧ}
+ 
+\date[\todayshort]{\today}
+ 
+\begin{document}
+ 
+\frame{\titlepage}
+ 
+% --- Μέτρα Πολυπλοκότητας ---
+\begin{frame}
+\frametitle{Title}
+
+\setbeamertemplate{itemize items}[ball]
+\begin{itemize}
+\item Item
+
+\setbeamertemplate{itemize items}[square]
+\begin{itemize}
+\item $math$
+\end{itemize}
+
+\setbeamertemplate{itemize items}[ball]
+\item Item
+
+\setbeamertemplate{itemize items}[square]
+\begin{itemize}
+\item Item
+\end{itemize}
+
+\setbeamertemplate{itemize items}[ball]
+\item Item
+
+\setbeamertemplate{itemize items}[square]
+\begin{itemize}
+\item Item
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+% --- Ορισμός Εντροπίας Αναδιάταξης ---
+\begin{frame}
+\frametitle{Title}
+Text
+
+\begin{block}{Ορισμός}
+Definition
+\end{block}
+
+\begin{itemize}
+\item Item
+\item Item
+	\begin{itemize}
+	\setbeamertemplate{itemize items}[square]
+	\item Subitem
+	\item Subitem
+	\item Subitem
+	\setbeamertemplate{itemize items}[ball]
+	\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+% --- Υπολογισμός/Παραδείγματα, Κανονικοποίηση ---
+\begin{frame}
+\frametitle{Title}
+
+\begin{exampleblock}{Example}
+\begin{columns}
+\column{0.5\textwidth}
+\begin{figure}
+Figure
+\end{figure}
+
+\column{0.5\textwidth}
+Text
+\begin{itemize}
+\item Item
+\item Item
+\item Item
+\end{itemize}
+
+\end{columns}
+\end{exampleblock} 
+
+\vspace{0.1cm}
+Text
+\begin{itemize}
+\item Item
+\item Item
+\end{itemize}
+
+\end{frame}
+
+
+% --- Βιβλιογραφία ---
+\begin{frame}
+\frametitle{Αναφορές}
+
+\bibliographystyle{ieeetr}
+
+\begin{thebibliography}{9}
+\bibitem{pentropy} 
+Christoph Bandt, Bernd Pompe.
+\textit{Permutation Entropy: A Natural Complexity Measure for Time Series}. 
+Physical Review Letters, Volume 88, Number 17, 29 April 2002.
+
+\bibitem{eegs} 
+Nicoletta Nicolaou, Julius Georgiou.
+\textit{Detection of epileptic electroencephalogram based on Permutation Entropy and
+Support Vector Machines}. 
+Expert Systems with Applications, Volume 39, Issue 1, January 2012, Pages 202-209.
+ 
+\end{thebibliography}
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
