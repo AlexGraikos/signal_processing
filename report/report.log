@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2018.4.10)  26 AUG 2018 23:30
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2018.4.10)  28 AUG 2018 13:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -886,12 +886,13 @@ File: fig/123l1_detected_peaks.pdf Graphic file (type QTm)
  <use  "fig/123l1_detected_peaks.pdf" >
 File: fig/118l1_detected_peaks.pdf Graphic file (type QTm)
 
-<use  "fig/118l1_detected_peaks.pdf" >
+<use  "fig/118l1_detected_peaks.pdf" > [17]
 File: fig/217l1_detected_peaks.pdf Graphic file (type QTm)
- <use  "fig/217l1_detected_peaks.pdf" >
-File: fig/221l1_detected_peaks.pdf Graphic file (type QTm)
 
-<use  "fig/221l1_detected_peaks.pdf" > [17] [18] (./report.aux) ) 
+<use  "fig/217l1_detected_peaks.pdf" >
+File: fig/221l1_detected_peaks.pdf Graphic file (type QTm)
+ <use  "fig/221l1_detected_peaks.pdf" >
+[18] (./report.aux) ) 
 Here is how much of TeX's memory you used:
  16454 strings out of 493638
  311810 string characters out of 6146796

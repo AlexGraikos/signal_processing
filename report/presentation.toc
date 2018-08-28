@@ -1,1 +1,12 @@
 \beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{Σήματα που επιλέχθηκαν}{3}{0}{1}
+\beamer@sectionintoc {2}{Ανάλυση Σημάτων}{4}{0}{2}
+\beamer@subsectionintoc {2}{1}{Σήμα 112 (Ακροδέκτης 1)}{4}{0}{2}
+\beamer@subsectionintoc {2}{2}{Σήμα 112 (Ακροδέκτης 2)}{8}{0}{2}
+\beamer@subsectionintoc {2}{3}{Σήμα 123}{10}{0}{2}
+\beamer@subsectionintoc {2}{4}{Σήμα 118}{13}{0}{2}
+\beamer@subsectionintoc {2}{5}{Σήμα 217}{16}{0}{2}
+\beamer@subsectionintoc {2}{6}{Σήμα 221}{19}{0}{2}
+\beamer@sectionintoc {3}{Ανίχνευση Διαστημάτων R-R}{22}{0}{3}
+\beamer@subsectionintoc {3}{1}{Αλγόριθμος Ανίχνευσης}{22}{0}{3}
+\beamer@subsectionintoc {3}{2}{Αποτελέσματα}{26}{0}{3}
